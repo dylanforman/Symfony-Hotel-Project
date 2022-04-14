@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Restaurant Menu{% endblock %}
+
+{% block body %}
+    <h1>TU Dublin Restaurant Menu</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Food</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Menu</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for food in food %}
+            <tr>
+                <td>{{ food.foodName }}</td>
+                <td>{{ food.price }}</td>
+                <td>{{ food.description }}</td>
+                <td>{{ food.menu }}</td>
+                <td>
+                    <a href="{{ path('food_show', {'id': food.id}) }}">show</a>
+                    <a href="{{ path('food_edit', {'id': food.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('food_new') }}">Create new</a>
+{% endblock %}

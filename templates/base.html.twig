@@ -6,7 +6,7 @@
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
+             {{ encore_entry_link_tags('app') }}
         {% endblock %}
 
         <!-- BOOTSTRAP 5 CSS -->
@@ -20,13 +20,46 @@
         {% endblock %}
     </head>
     <body>
-        <ul>
-            <li>
-                <a href="/">
-                    Home Page
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
+        <a style="margin-left: 0.1rem;" class="navbar-brand space-brand" href="/">
+            Tu Dublin Hotel
+        </a>
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url('booking_new') }}">
+                Book a Room
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url('room_index') }}">
+                    View Rooms
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url('food_index') }}">
+                    Restaurant Menu
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url('reservation_new') }}">
+                    Make a Reservation for Dinner
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url('review_new') }}">
+                    Leave a Review
+                </a>
+            </li>
+            <li class="nav-item">
+                {% if app.user %}
+                    <div class="mb-3">
+                        Logged in: {{ app.user.username }} <a href="{{ path('app_logout') }}">Logout</a>
+                    </div>
+                {% endif %}
+            </li>
         </ul>
+    </nav>
 
         <div class="container">
             <div class="row">

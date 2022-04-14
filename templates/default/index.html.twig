@@ -6,12 +6,6 @@
 {% block body %}
 
 
-    {% if app.user %}
-        <div class="mb-3">
-            Logged in: {{ app.user.username }} <a href="{{ path('app_logout') }}">Logout</a>
-        </div>
-    {% endif %}
-
 
     <h1>Welcome to the TU Dublin Hotel</h1>
     <p>
@@ -19,6 +13,9 @@
     </p>
     <p>
         <a href ="{{ path('room_index') }}">View our Rooms and Prices</a>
+    </p>
+    <p>
+        <a href = "{{ path('menu_index') }}">View our Restaurant Menu</a>
     </p>
     <p>
         <a href = "{{ path('reservation_new') }}">Make a Reservation at the Restaurant</a>

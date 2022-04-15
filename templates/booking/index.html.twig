@@ -1,19 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Booking index{% endblock %}
+{% block title %}Bookings{% endblock %}
 
 {% block body %}
-    <h1>Booking index</h1>
+    <h1>Lists of Bookings</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>GuestName</th>
-                <th>StartDate</th>
-                <th>EndDate</th>
-                <th>NumAdults</th>
-                <th>NumChild</th>
+                <th>Booking ID</th>
+                <th>Guest Name</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Number of Adults</th>
+                <th>Number of Children</th>
+                <th>Room Type</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -26,6 +27,8 @@
                 <td>{{ booking.endDate ? booking.endDate|date('Y-m-d') : '' }}</td>
                 <td>{{ booking.numAdults }}</td>
                 <td>{{ booking.numChild }}</td>
+                <td>{{ booking.room }}</td>
+
                 <td>
                     <a href="{{ path('booking_show', {'id': booking.id}) }}">show</a>
                     <a href="{{ path('booking_edit', {'id': booking.id}) }}">edit</a>
@@ -39,5 +42,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('booking_new') }}">Create new</a>
+    <a href="{{ path('booking_new') }}">Make a Booking </a>
 {% endblock %}

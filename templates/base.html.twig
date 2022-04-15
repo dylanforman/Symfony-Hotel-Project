@@ -56,8 +56,18 @@
                     <div class="mb-3">
                         Logged in: {{ app.user.username }} <a href="{{ path('app_logout') }}">Logout</a>
                     </div>
+                {% elseif app.user == null %}
+                    <div class="mb-3">
+                        <a href="{{ path('app_login') }}">Login</a>
+                    </div>
+
                 {% endif %}
             </li>
+            <li class="nav-item">
+
+
+            </li>
+
         </ul>
     </nav>
 

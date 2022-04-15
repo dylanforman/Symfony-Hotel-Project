@@ -23,10 +23,15 @@
     <p>
         <a href = "{{ path('review_new') }}">Leave a Review</a>
     </p>
+    {% if app.user == null %}
     <p>
         <a href = "{{ path('user_new') }}">Create an Account</a>
     </p>
-
-
+    {% endif %}
+    <p>
+    {%  if is_granted('ROLE_USER') %}
+        <p>Admin Test</p>
+    {% endif %}
+    </p>
 
 {% endblock %}

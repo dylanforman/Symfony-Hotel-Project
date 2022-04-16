@@ -20,56 +20,144 @@
         {% endblock %}
     </head>
     <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
-        <a style="margin-left: 0.1rem;" class="navbar-brand space-brand" href="/">
-            Tu Dublin Hotel
-        </a>
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('booking_new') }}">
-                Book a Room
+        {% if app.user == null or is_granted('ROLE_GUEST') or is_granted('ROLE_ADMIN') %}
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
+                <a style="margin-left: 0.1rem;" class="navbar-brand space-brand" href="/">
+                    Tu Dublin Hotel
                 </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('room_index') }}">
-                    View Rooms
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('food_index') }}">
-                    Restaurant Menu
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('reservation_new') }}">
-                    Make a Reservation for Dinner
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('review_new') }}">
-                    Leave a Review
-                </a>
-            </li>
-            <li class="nav-item">
-                {% if app.user %}
-                    <div class="mb-3">
-                        Logged in: {{ app.user.username }} <a href="{{ path('app_logout') }}">Logout</a>
-                    </div>
-                {% elseif app.user == null %}
-                    <div class="mb-3">
-                        <a href="{{ path('app_login') }}">Login</a>
-                    </div>
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
-                {% endif %}
-            </li>
-            <li class="nav-item">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('booking_new') }}">
+                        Book a Room
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('room_index') }}">
+                            View Rooms
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('food_index') }}">
+                            Restaurant Menu
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('reservation_new') }}">
+                            Make a Reservation for Dinner
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('review_new') }}">
+                            Leave a Review
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        {% if app.user %}
+                            <div class="mb-3">
+                                Logged in: {{ app.user.username }} <a href="{{ path('app_logout') }}">Logout</a>
+                            </div>
+                        {% elseif app.user == null %}
+                            <div class="mb-3">
+                                <a href="{{ path('app_login') }}">Login</a>
+                            </div>
+
+                        {% endif %}
+                    </li>
+
+                </ul>
+            </nav>
+        {% endif %}
+
+        {% if is_granted('ROLE_CHEF') %}
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
+                <a style="margin-left: 0.1rem;" class="navbar-brand space-brand" href="/">
+                    Chef Homepage
+                </a>
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('food_new') }}">
+                           Add an Item to Menu
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('reservation_index') }}">
+                            View Reservations
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('food_index') }}">
+                            Restaurant Menu
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('review_index') }}">
+                            View Reviews
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        {% if app.user %}
+                            <div class="mb-3">
+                                <a href="{{ path('app_logout') }}">Logout</a>
+                            </div>
+                        {% elseif app.user == null %}
+                            <div class="mb-3">
+                                <a href="{{ path('app_login') }}">Login</a>
+                            </div>
+
+                        {% endif %}
+                    </li>
+
+                </ul>
+            </nav>
+        {% endif %}
+
+        {% if is_granted('ROLE_RECEPTIONIST') %}
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
+                <a style="margin-left: 0.1rem;" class="navbar-brand space-brand" href="/">
+                    Receptionist Homepage
+                </a>
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('booking_index') }}">
+                            Bookings
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('room_new') }}">
+                            Add Room
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('reservation_index') }}">
+                            Reservations
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('review_index') }}">
+                            View Reviews
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        {% if app.user %}
+                            <div class="mb-3">
+                                <a href="{{ path('app_logout') }}">Logout</a>
+                            </div>
+                        {% elseif app.user == null %}
+                            <div class="mb-3">
+                                <a href="{{ path('app_login') }}">Login</a>
+                            </div>
+
+                        {% endif %}
+                    </li>
+
+                </ul>
+            </nav>
+        {% endif %}
 
 
-            </li>
-
-        </ul>
-    </nav>
 
         <div class="container">
             <div class="row">

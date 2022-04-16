@@ -6,32 +6,70 @@
 {% block body %}
 
 
+    {% if app.user == null or is_granted('ROLE_GUEST') or is_granted('ROLE_ADMIN') %}
+        <h1>Welcome to the TU Dublin Hotel</h1>
+        <p>
+            <a href="{{ path('booking_new') }}">Book a Room</a>
+        </p>
+        <p>
+            <a href ="{{ path('room_index') }}">View our Rooms and Prices</a>
+        </p>
+        <p>
+            <a href = "{{ path('food_index') }}">View our Restaurant Menu</a>
+        </p>
+        <p>
+            <a href = "{{ path('reservation_new') }}">Make a Reservation at the Restaurant</a>
+        </p>
+        <p>
+            <a href = "{{ path('review_new') }}">Leave a Review</a>
+        </p>
+        {% if app.user == null %}
+            <p>
+                If you are a frequent guest, you can sign up for an account and receive discounts.
+                <br>
+                Email tudublinhotel@example.ie to sign up.
+            </p>
+        {% endif %}
 
-    <h1>Welcome to the TU Dublin Hotel</h1>
-    <p>
-        <a href="{{ path('booking_new') }}">Book a Room</a>
-    </p>
-    <p>
-        <a href ="{{ path('room_index') }}">View our Rooms and Prices</a>
-    </p>
-    <p>
-        <a href = "{{ path('menu_index') }}">View our Restaurant Menu</a>
-    </p>
-    <p>
-        <a href = "{{ path('reservation_new') }}">Make a Reservation at the Restaurant</a>
-    </p>
-    <p>
-        <a href = "{{ path('review_new') }}">Leave a Review</a>
-    </p>
-    {% if app.user == null %}
-    <p>
-        <a href = "{{ path('user_new') }}">Create an Account</a>
-    </p>
     {% endif %}
-    <p>
-    {%  if is_granted('ROLE_USER') %}
-        <p>Admin Test</p>
+
+
+    {%  if is_granted('ROLE_CHEF') %}
+        <h1>Welcome Chef, {{ app.user.username }}</h1>
+
+        <p>
+            <a href = "{{ path('food_new') }}">Update the Menu</a>
+        </p>
+
+        <p>
+            <a href = "{{ path('reservation_index') }}">View Reservations</a>
+        </p>
+
+        <p>
+            <a href = "{{ path('food_index') }}">View the Menu</a>
+        </p>
+
+        <p>
+            <a href = "{{ path('review_index') }}">View Reviews</a>
+        </p>
+
     {% endif %}
-    </p>
+
+    {% if is_granted('ROLE_RECEPTIONIST') %}
+        <h1>Receptionist Home Page</h1>
+        <p>User: {{ app.user.username }}</p>
+        <p>
+            <a href = {{ path('booking_index') }}>View Bookings</a>
+        </p>
+        <p>
+            <a href = {{ path('room_new') }}>Add a new room</a>
+        </p>
+        <p>
+            <a href = {{ path('reservation_index') }}>View Restaurant Reservations</a>
+        </p>
+        <p>
+            <a href = {{ path('review_index') }}>View Customer Reviews</a>
+        </p>
+    {% endif %}
 
 {% endblock %}

@@ -25,5 +25,7 @@ class AppFixtures extends Fixture
             'role' => 'ROLE_ADMIN'
         ]);
 
+        $manager->flush();
+
     }
 }

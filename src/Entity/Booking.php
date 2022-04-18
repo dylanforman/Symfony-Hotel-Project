@@ -31,6 +31,19 @@ class Booking
     #[ORM\Column(type: 'integer')]
     private $numChild;
 
+    public function __construct($id, $guestName, $room, $startDate, $endDate, $numAdults, $numChild)
+    {
+        $this->id = $id;
+        $this->guestName = $guestName;
+        $this->room =$room;
+        $this->startDate = $startDate;
+        $this->endDate = $endDate;
+        $this->numAdults = $numAdults;
+        $this->numChild = $numChild;
+    }
+
+
+
     public function getId(): ?int
     {
         return $this->id;

@@ -20,6 +20,11 @@ class Room
     #[ORM\Column(type: 'float')]
     private $pricePerNight;
 
+    public function __construct($roomType)
+    {
+        $this->roomType = $roomType;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

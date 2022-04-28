@@ -5,21 +5,28 @@ namespace App\DataFixtures;
 use App\Entity\Booking;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use App\Factory\BookingFactory;
 
 class BookingFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        // $product = new Product();
-        // $manager->persist($product);
-        $b1 = new Booking();
-        $b1->setGuestName("Dylan XYZ");
-        $b1->setRoom("Family Room");
-        $b1->setStartDate('2022-09-01');
-        $b1->setEndDate('2022-09-05');
-        $b1->setNumAdults(2);
-        $b1->setNumChild(2);
-        $manager->persist($b1);
-        $manager->flush();
+        BookingFactory::createOne([
+            'guestName' => 'guestOne',
+            'room' => 'Family Room',
+            'startDate' => '2022-04-28',
+            'endDate' => '2002-04-30',
+            'numAdults' => 2,
+            'numChild' => 2
+        ]);
+
+        BookingFactory::createOne([
+            'guestName' => 'guestTwo',
+            'room' => 'Double Room',
+            'startDate' => '2022-03-28',
+            'endDate' => '2002-03-30',
+            'numAdults' => 2,
+            'numChild' => 0
+        ]);
     }
 }

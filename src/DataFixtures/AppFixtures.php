@@ -2,30 +2,43 @@
 
 namespace App\DataFixtures;
 
+
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
 use App\Factory\UserFactory;
-use App\Factory\MakeFactory;
-use App\Factory\PhoneFactory;
 
 class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
         UserFactory::createOne([
-            'username' => 'matt',
-            'password' => 'smith',
+            'username' => 'admin123',
+            'password' => 'admin123',
             'role' => 'ROLE_ADMIN'
         ]);
 
         UserFactory::createOne([
-            'username' => 'john',
-            'password' => 'doe',
-            'role' => 'ROLE_ADMIN'
+            'username' => 'recep123',
+            'password' => 'recep123',
+            'role' => 'ROLE_RECEPTIONIST'
         ]);
 
-        $manager->flush();
+        UserFactory::createOne([
+            'username' => 'chef123',
+            'password' => 'chef123',
+            'role' => 'ROLE_CHEF'
+        ]);
+
+        UserFactory::createOne([
+            'username' => 'guest123',
+            'password' => 'guest123',
+            'role' => 'ROLE_GUEST'
+        ]);
+
+
+
+
 
     }
 }

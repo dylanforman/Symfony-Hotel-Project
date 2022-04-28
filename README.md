@@ -5,7 +5,7 @@ This repository is for my assignment for Web Framework Development. It is a Hote
 Implemented Features From the Marking Scheme Posted on Moodle.
 
   Database Features:
-  Every Entity has Features.
+  Every Entity has fixtures.
   
   Security Features:
   Protected CRUD Roles

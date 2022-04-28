@@ -3,6 +3,7 @@
 This repository is for my assignment for Web Framework Development. It is a Hotel system built using Symfony and PHP.
 
 Implemented Features From the Marking Scheme Posted on Moodle.
+
   Database Features:
   Every Entity has Features.
   

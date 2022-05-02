@@ -28,7 +28,6 @@ Implemented Features From the Marking Scheme Posted on Moodle.
   Commit over weeks and useful commit messsages
   
   Advanced Features (Quality / UX):
-  Published Working Site - Fortrabbit,
   Navbar for all CS roles,
   Easy to use,
   Consistent look and feel,
